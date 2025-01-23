@@ -1,0 +1,78 @@
+{
+  "LocaleLayout": {
+    "title": "Планируем стол"
+  },
+  "NavBar": {
+    "myMenus": "Мои Меню",
+    "myDishes": "Мои Блюда",
+    "myIngredients": "Мои Ингредиенты"
+  },
+  "Ingredients": {
+    "create": "Создать новый ингредиент"
+  },
+  "Dishes": {
+    "create": "Создать новое блюдо"
+  },
+  "DishCard": {
+    "IngredientsHeader": "Ингредиенты"
+  },
+  "DishEditor": {
+    "addIngredient": "Добавить Ингредиент"
+  },
+  "IngredientMeasure": {
+    "askHowMany": "Как много?",
+    "selectMeasure": "Выберите единицы измерения",
+    "gramm": "Грамм",
+    "kg": "Кг",
+    "item": "Штука",
+    "removeIngredient": "Убрать"
+  },
+  "IngredientsFinder": {
+    "createIngredient": "Создать новый"
+  },
+  "Components": {
+    "DeleteButton": {
+      "delete": "Удалить"
+    },
+    "SaveButton": {
+      "save": "Сохранить"
+    },
+    "EditButton": {
+      "edit": "Изменить"
+    },
+    "AppSidebar": {
+      "brand": "Festive",
+      "mainSection": "Основное"
+    }
+  },
+  "Links": {
+    "menus": "Мои Меню",
+    "dishes": "Мои Блюда",
+    "ingredients": "Мои Ингредиенты",
+    "edit": "Редактировать",
+    "create": "Создать"
+  },
+  "SignIn": {
+    "title": "Варианты входа",
+    "description": "Пожалуйста, выберите один из следующих вариантов входа для продолжения",
+    "google": {
+      "title": "Войти с Google",
+      "alt": "Google"
+    },
+    "github": {
+      "title": "Войти с GitHub",
+      "alt": "GitHub"
+    },
+    "instagram": {
+      "title": "Войти с Instagram",
+      "alt": "Instagram"
+    },
+    "vk": {
+      "title": "Войти с VK",
+      "alt": "VK"
+    }
+  },
+  "SignOut": {
+    "title": "Выйти"
+  }
+}

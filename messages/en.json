@@ -1,0 +1,78 @@
+{
+  "LocaleLayout": {
+    "title": "Feast Planner"
+  },
+  "NavBar": {
+    "myMenus": "My Menus",
+    "myDishes": "My Dishes",
+    "myIngredients": "My Ingredients"
+  },
+  "Ingredients": {
+    "create": "Create new ingredient"
+  },
+  "Dishes": {
+    "create": "Create new dish"
+  },
+  "DishCard": {
+    "IngredientsHeader": "Ingredients"
+  },
+  "DishEditor": {
+    "addIngredient": "Add Ingredient"
+  },
+  "IngredientMeasure": {
+    "askHowMany": "How many?",
+    "selectMeasure": "Select measurement units",
+    "gramm": "Gramm",
+    "kg": "Kg",
+    "item": "Item",
+    "removeIngredient": "Remove"
+  },
+  "IngredientsFinder": {
+    "createIngredient": "Create New Ingredient"
+  },
+  "Components": {
+    "DeleteButton": {
+      "delete": "Delete"
+    },
+    "SaveButton": {
+      "save": "Save"
+    },
+    "EditButton": {
+      "edit": "Edit"
+    },
+    "AppSidebar": {
+      "brand": "Festive",
+      "mainSection": "Main"
+    }
+  },
+  "Links": {
+    "menus": "My Menus",
+    "dishes": "My Dishes",
+    "ingredients": "My Ingredients",
+    "edit": "Edit",
+    "create": "Create"
+  },
+  "SignIn": {
+    "title": "Sign In Options",
+    "description": "Please select one of the following sign in options to proceed",
+    "google": {
+      "title": "Sign in with Google",
+      "alt": "Google"
+    },
+    "github": {
+      "title": "Sign in with GitHub",
+      "alt": "GitHub"
+    },
+    "instagram": {
+      "title": "Sign in with Instagram",
+      "alt": "Instagram"
+    },
+    "vk": {
+      "title": "Sign in with VK",
+      "alt": "VK"
+    }
+  },
+  "SignOut": {
+    "title": "Sign Out"
+  }
+}
