@@ -1,0 +1,307 @@
+[
+  {
+    "_id": "000000000000000000000001",
+    "name": "Греческий салат",
+    "description": "Классический греческий салат с овощами и сыром фета",
+    "ingredients": [
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000006",
+        "quantity": 1
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000007",
+        "quantity": 2
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000008",
+        "quantity": 1
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000016",
+        "quantity": 20
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000401",
+        "quantity": 100
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000002",
+    "name": "Цезарь",
+    "description": "Популярный салат с курицей, сухариками и соусом Цезарь",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000105",
+        "quantity": 150
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000018",
+        "quantity": 50
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000393",
+        "quantity": 30
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000346",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000003",
+    "name": "Нисуаз",
+    "description": "Французский салат с тунцом и овощами",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000215",
+        "quantity": 100
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000007",
+        "quantity": 2
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000241",
+        "quantity": 50
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000004",
+    "name": "Вальдорф",
+    "description": "Американский салат с яблоком, орехами и майонезом",
+    "ingredients": [
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000160",
+        "quantity": 1
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000249",
+        "quantity": 50
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000358",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000005",
+    "name": "Капрезе",
+    "description": "Салат из томатов, моцареллы и базилика",
+    "ingredients": [
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000007",
+        "quantity": 2
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000393",
+        "quantity": 100
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000036",
+        "quantity": 20
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000518",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000006",
+    "name": "Мимоза",
+    "description": "Слоеный салат с рыбой, яйцом и морковью",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000204",
+        "quantity": 150
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000001",
+        "quantity": 1
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000016",
+        "quantity": 1
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000358",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000007",
+    "name": "Салат Кобб",
+    "description": "Американский салат с курицей, беконом и авокадо",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000105",
+        "quantity": 100
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000097",
+        "quantity": 50
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000183",
+        "quantity": 1
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000018",
+        "quantity": 50
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000008",
+    "name": "Винегрет",
+    "description": "Традиционный русский салат с картофелем, свеклой и солеными огурцами",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000002",
+        "quantity": 150
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000011",
+        "quantity": 100
+      },
+      {
+        "measure": "item",
+        "ingredient": "000000000000000000000006",
+        "quantity": 1
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000009",
+    "name": "Французский салат с козьим сыром",
+    "description": "Легкий салат с козьим сыром, грецкими орехами и медом",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000019",
+        "quantity": 50
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000531",
+        "quantity": 100
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000249",
+        "quantity": 30
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000518",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  },
+  {
+    "_id": "000000000000000000000010",
+    "name": "Немецкий картофельный салат",
+    "description": "Сытный салат с картофелем, беконом и уксусной заправкой",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000002",
+        "quantity": 200
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000097",
+        "quantity": 50
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000518",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "salad"
+    ]
+  }
+]

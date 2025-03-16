@@ -1,15 +1,13 @@
-import { GitHubProfile } from "./../../node_modules/@auth/mongodb-adapter/node_modules/@auth/core/src/providers/github";
-import { GoogleProfile } from "./../../node_modules/@auth/mongodb-adapter/node_modules/@auth/core/src/providers/google";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import Instagram from "next-auth/providers/instagram";
 import Vk from "next-auth/providers/vk";
-import Credentials from "next-auth/providers/credentials";
-import client from "@/lib/db";
-import { hash, compare } from "bcrypt";
+import client from "./services/mongo";
 
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import { Entity, UserRole } from "@/sdk/types";
+import { UserRoleEnumSchema } from "@/sdk/schemas";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -44,31 +42,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     //   },
     // }),
     Google({
-      profile(profile: GoogleProfile) {
+      profile(profile) {
         return {
           id: profile.id,
           name: profile.name,
           email: profile.email,
           image: profile.picture,
-          role: "user",
+          role: UserRoleEnumSchema.enum.user,
         };
       },
       allowDangerousEmailAccountLinking: true,
     }),
     Github({
-      profile(profile: GitHubProfile) {
+      profile(profile) {
         return {
           id: profile.id.toString(),
           name: profile.login,
           email: profile.email,
           image: profile.avatar_url,
-          role: "user",
+          role: UserRoleEnumSchema.enum.user,
         };
       },
     }),
     Instagram,
     Vk,
   ],
+  // @ts-ignore: 2322
   adapter: MongoDBAdapter(client, {
     databaseName: process.env.DB_NAME,
   }),
@@ -89,3 +88,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
   },
 });
+
+export const userCanModifyEntity = async (entity: Entity) => {
+  const session = await auth();
+  if (
+    (
+      [
+        UserRoleEnumSchema.enum.admin,
+        UserRoleEnumSchema.enum.moderator,
+      ] as UserRole[]
+    ).includes(session?.user.role ?? UserRoleEnumSchema.enum.user)
+  ) {
+    return true;
+  }
+  return session?.user.id === entity.createdBy;
+};

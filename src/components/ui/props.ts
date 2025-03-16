@@ -1,11 +1,13 @@
-import { WithId } from "@/sdk/types";
+import { Entity, ID } from "@/sdk/types";
 
-export type EditorProps<T> = {
+export type Action<T extends Entity> = (state: Awaited<T>) => Promise<void>;
+
+export type EditorProps<T extends Entity> = {
+  formId?: string;
+  entityId?: ID;
+  readonly?: boolean;
   redirect?: string;
   noSaveButton?: boolean;
   noDeleteButton?: boolean;
-  formId?: string;
-  readonly?: boolean;
-  entity?: Partial<WithId<T>>;
-  submitAction?: (entity: Partial<WithId<T>>) => Promise<void>;
+  entity?: T;
 };

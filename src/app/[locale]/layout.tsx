@@ -7,11 +7,12 @@ import {
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-import { AppSidebar } from "@/components/ui/collection/app-sidebar";
+import { AppSidebar } from "@/app/ui/collection/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { interSans, interTight } from "../fonts";
-import PageLayout from "@/components/ui/collection/layout/page-layout";
-
+import { interSans, interTight, montserrat } from "../fonts";
+import PageLayout from "@/app/ui/collection/layout/page-layout";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Suspense } from "react";
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -50,17 +51,21 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="m-0 h-screen w-full">
       <body
-        className={`${interSans.variable} ${interTight.variable} ${interSans.className} antialiased h-full w-full`}
+        className={`${interSans.variable} ${interTight.variable} ${montserrat.variable} ${montserrat.className} antialiased h-full w-full`}
       >
         <NextIntlClientProvider messages={messages}>
-          {/* <header className="fixed h-20 bg-gray-400 w-full p-4 z-20"></header> */}
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <PageLayout>{children}</PageLayout>
-            </SidebarInset>
-          </SidebarProvider>
-          <footer>{drawer}</footer>
+          <NuqsAdapter>
+            {/* <header className="fixed h-20 bg-gray-400 w-full p-4 z-20"></header> */}
+            <SidebarProvider>
+              <Suspense>
+                <AppSidebar />
+              </Suspense>
+              <SidebarInset>
+                <PageLayout>{children}</PageLayout>
+              </SidebarInset>
+            </SidebarProvider>
+            <footer>{drawer}</footer>
+          </NuqsAdapter>
         </NextIntlClientProvider>
       </body>
     </html>

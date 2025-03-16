@@ -4,10 +4,12 @@ import {
   Dish,
   Menu,
   ID,
-  IngredientID,
-  DishID,
-  MenuID,
   WithId as WithSimpleId,
+  IngredientCategory,
+  EntityFindBy,
+  DishCategory,
+  Entity,
+  EntityEnum,
 } from "./types";
 import { WithoutId } from "mongodb";
 export class APIError extends Error {}
@@ -18,40 +20,68 @@ export enum StorageCollections {
 }
 export const DB_NAME = env.DB_NAME!;
 export type API = {
+  getEntity<T extends Entity>(
+    entity: EntityEnum,
+    id: string
+  ): Promise<WithSimpleId<T>>;
+  getEntityCategories<E extends Entity>(
+    entity: EntityEnum
+  ): Promise<[string, number][]>;
+  getEntities<E extends Entity>(
+    entity: EntityEnum,
+    criteria?: EntityFindBy
+  ): Promise<[WithSimpleId<E>[], number]>;
+  createEntity<E extends Entity>(
+    entityName: EntityEnum,
+    entityData: WithoutId<E>
+  ): Promise<ID>;
+  updateEntity<E extends Entity>(
+    entityName: EntityEnum,
+    id: ID,
+    entityData: Partial<E>
+  ): Promise<void>;
+  deleteEntity(entityName: EntityEnum, id: ID): Promise<void>;
+
+  getIngredientsCategories(): Promise<[IngredientCategory, number][]>;
   getIngredient(id: string): Promise<WithSimpleId<Ingredient>>;
-  getIngredients(...ids: string[]): Promise<WithSimpleId<Ingredient>[]>;
+  getIngredients(
+    criteria?: EntityFindBy
+  ): Promise<[WithSimpleId<Ingredient>[], number]>;
 
   createIngredient(ingredient: WithoutId<Ingredient>): Promise<ID>;
 
-  updateIngredient(
-    id: IngredientID,
-    ingredient: WithSimpleId<Partial<Ingredient>>
-  ): Promise<void>;
+  updateIngredient(id: ID, ingredient: Partial<Ingredient>): Promise<void>;
 
-  deleteIngredient(id: IngredientID): Promise<void>;
-  getDish(id: DishID): Promise<WithSimpleId<Dish>>;
+  deleteIngredient(id: ID): Promise<void>;
+  getDishCategories(): Promise<[DishCategory, number][]>;
 
-  getDishes(): Promise<WithSimpleId<Dish>[]>;
+  getDish(id: ID): Promise<WithSimpleId<Dish>>;
 
-  createDish(dish: WithoutId<Dish>): Promise<DishID>;
+  getDishes(criteria?: EntityFindBy): Promise<[WithSimpleId<Dish>[], number]>;
 
-  updateDish(id: DishID, dish: WithSimpleId<Partial<Dish>>): Promise<void>;
+  createDish(dish: WithoutId<Dish>): Promise<ID>;
 
-  deleteDish(id: DishID): Promise<void>;
+  updateDish(id: ID, dish: Partial<Dish>): Promise<void>;
+
+  deleteDish(id: ID): Promise<void>;
+
+  getMenu(id: ID): Promise<WithSimpleId<Menu>>;
 
   getMenus(): Promise<WithSimpleId<Menu>[]>;
 
-  createMenu(menu: WithoutId<Menu>): Promise<MenuID>;
+  createMenu(menu: WithoutId<Menu>): Promise<ID>;
 
-  deleteMenu(id: MenuID): Promise<WithSimpleId<Menu>>;
+  updateMenu(id: ID, menu: Partial<Menu>): Promise<void>;
 
-  cleanMenu(id: MenuID): Promise<void>;
+  deleteMenu(id: ID): Promise<WithSimpleId<Menu>>;
 
-  addDishToMenu(tableId: MenuID, dishId: DishID): Promise<void>;
+  cleanMenu(id: ID): Promise<void>;
 
-  incrementDishInMenu(tableId: MenuID, dishId: MenuID): Promise<void>;
+  addDishToMenu(tableId: ID, dishId: ID): Promise<void>;
 
-  decrementDishInMenu(tableId: MenuID, dishId: MenuID): Promise<void>;
+  incrementDishInMenu(tableId: ID, dishId: ID): Promise<void>;
 
-  removeDishFromMenu(tableId: MenuID, dishId: MenuID): Promise<void>;
+  decrementDishInMenu(tableId: ID, dishId: ID): Promise<void>;
+
+  removeDishFromMenu(tableId: ID, dishId: ID): Promise<void>;
 };

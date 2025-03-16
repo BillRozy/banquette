@@ -1,30 +1,36 @@
-import { auth } from "@/app/auth";
-import { Button } from "@/components/ui/button";
-import IngredientsOverview from "@/components/ui/ingredient/overview";
-import { Link } from "@/i18n/routing";
+import { PaginationWithQuery } from "@/app/ui/collection/pagination";
+import IngredientsOverview from "@/app/ui/ingredient/overview";
 import { API } from "@/sdk";
-import { Plus } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 import React from "react";
 
-export default async function Ingredients() {
-  const session = await auth();
-  const ingredients = await API.getIngredients("sdsa");
-  const t = await getTranslations("Ingredients");
+import { IngredientCategory } from "@/sdk/types";
+import EntitiesLayout from "@/app/ui/collection/layout/entities-overview-layout";
+import {
+  EntitySearchParams,
+  filtersFromLoader,
+  getEntitySearchParamsLoader,
+} from "@/app/utils";
+import EntityFilters from "@/app/ui/collection/filter/entity-filters";
+import { EntityEnumSchema, IngredientCategoryEnumSchema } from "@/sdk/schemas";
+
+const loadSearchParams = getEntitySearchParamsLoader<IngredientCategory>(
+  Object.values(IngredientCategoryEnumSchema.enum)
+);
+
+export default async function Ingredients({
+  searchParams,
+}: {
+  searchParams: Promise<EntitySearchParams>;
+}) {
+  const [ingredients, ingredientsTotal] = await API.getIngredients(
+    await filtersFromLoader(loadSearchParams, searchParams)
+  );
+
   return (
-    <div className="p-4 flex flex-col gap-4 items-center">
-      <IngredientsOverview
-        ingredients={ingredients}
-        newIngredientSlot={
-          session?.user && (
-            <Link href="/ingredients/create">
-              <Button className="size-24 rounded-full" variant="outline">
-                <Plus></Plus>
-              </Button>
-            </Link>
-          )
-        }
-      ></IngredientsOverview>
-    </div>
+    <EntitiesLayout
+      filters={<EntityFilters entityName={EntityEnumSchema.enum.Ingredient} />}
+      entities={<IngredientsOverview ingredients={ingredients} />}
+      pagination={<PaginationWithQuery totalElements={ingredientsTotal} />}
+    />
   );
 }

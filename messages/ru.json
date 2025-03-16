@@ -19,13 +19,95 @@
   "DishEditor": {
     "addIngredient": "Добавить Ингредиент"
   },
+  "MenuEditor": {
+    "menu": "МЕНЮ",
+    "Section": {
+      "appetizers": "Закуски",
+      "mainCourses": "Основные блюда",
+      "desserts": "Десерты",
+      "drinks": "Напитки",
+      "others": "Другое",
+      "ingredients": "Ингредиенты"
+    }
+  },
+  "DishesFinder": {
+    "createDish": "Создать новое",
+    "nothingFound": "Ничего не найдено"
+  },
+  "Ingredient": {
+    "Category": {
+      "fish": "Рыба",
+      "meat": "Мясо",
+      "vegetable": "Овощ",
+      "fruit": "Фрукт",
+      "green": "Зелень",
+      "dairy": "Молочка",
+      "dryGoods": "Бакалея",
+      "bakery": "Выпечка",
+      "canned": "Консервы",
+      "eggs": "Яйца",
+      "oil": "Растительное масло",
+      "vinegar": "Уксус",
+      "sausage": "Колбаса",
+      "convenience": "Полуфабрикаты",
+      "grain": "Зерно",
+      "spice": "Специя",
+      "sauce": "Соус",
+      "sweet": "Сладкое",
+      "drink": "Напиток",
+      "other": "Другое"
+    },
+    "Search": {
+      "nameInputPlaceholder": "Искать ингредиент по имени"
+    }
+  },
+  "Dish": {
+    "Category": {
+      "appetizer": "Закуска",
+      "mainCourse": "Основное Блюдо",
+      "dessert": "Десерт",
+      "salad": "Салат",
+      "soup": "Суп",
+      "sideDish": "Гарнир",
+      "beverage": "Напиток",
+      "snack": "Снэк",
+      "sauce": "Соус",
+      "bread": "Хлеб",
+      "breakfast": "Завтрак",
+      "brunch": "Бранч",
+      "lunch": "Ланч",
+      "dinner": "Ужин",
+      "other": "Другое"
+    },
+    "Search": {
+      "nameInputPlaceholder": "Искать блюдо по имени"
+    }
+  },
   "IngredientMeasure": {
     "askHowMany": "Как много?",
-    "selectMeasure": "Выберите единицы измерения",
-    "gramm": "Грамм",
-    "kg": "Кг",
-    "item": "Штука",
+    "selectMeasure": "Выбрать",
+    "Group": {
+      "Mass": "По Массе",
+      "Volume": "По Объему",
+      "Other": "Другое"
+    },
+    "Mass": {
+      "gramm": "Грамм",
+      "kg": "Кг"
+    },
+    "Volume": {
+      "milliliter": "Мл",
+      "liter": "Л"
+    },
+    "Other": {
+      "item": "Штука",
+      "teaspoon": "Ч.л.",
+      "tablespoon": "Ст.л."
+    },
     "removeIngredient": "Убрать"
+  },
+  "EntityCategoryFilter": {
+    "title": "Категории"
   },
   "IngredientsFinder": {
     "createIngredient": "Создать новый"
@@ -35,7 +117,8 @@
       "delete": "Удалить"
     },
     "SaveButton": {
-      "save": "Сохранить"
+      "save": "Сохранить",
+      "loading": "Сохраняем"
     },
     "EditButton": {
       "edit": "Изменить"
@@ -43,12 +126,24 @@
     "AppSidebar": {
       "brand": "Festive",
       "mainSection": "Основное"
+    },
+    "Pagination": {
+      "previous": "Предыдущая",
+      "next": "Следующая",
+      "more": "Больше елементов"
+    },
+    "Search": {
+      "searchButton": "Искать",
+      "searchInputPlaceholder": "Введите название ингредиента"
+    },
+    "IngredientsList": {
+      "andMore": "и еще {quantity}"
     }
   },
   "Links": {
-    "menus": "Мои Меню",
-    "dishes": "Мои Блюда",
-    "ingredients": "Мои Ингредиенты",
+    "menus": "Меню",
+    "dishes": "Блюда",
+    "ingredients": "Ингредиенты",
     "edit": "Редактировать",
     "create": "Создать"
   },

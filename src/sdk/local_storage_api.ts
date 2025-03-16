@@ -1,6 +1,6 @@
 import { WithoutId } from "@/sdk/types";
 import { API, APIError } from "./api";
-import { Ingredient, Dish, Menu, IngredientID } from "./types";
+import { Ingredient, Dish, Menu, ID } from "./types";
 import { writeFile, readFile, mkdir } from "fs/promises";
 import { resolve } from "path";
 import { homedir } from "os";
@@ -43,7 +43,7 @@ async function setItem<T>(key: StorageKey, value: T[]): Promise<void> {
 }
 
 export default {
-  async getIngredient(id: IngredientID): Promise<Ingredient> {
+  async getIngredient(id: ID): Promise<Ingredient> {
     const ingredients = await getItem<Ingredient>(StorageKey.INGREDIENTS);
     const index = ingredients.findIndex((r) => r._id === id);
     if (index !== -1) {
@@ -56,9 +56,7 @@ export default {
     return getItem<Ingredient>(StorageKey.INGREDIENTS);
   },
 
-  async createIngredient(
-    ingredient: WithoutId<Ingredient>
-  ): Promise<IngredientID> {
+  async createIngredient(ingredient: WithoutId<Ingredient>): Promise<ID> {
     const ingredients = await getItem<Ingredient>(StorageKey.INGREDIENTS);
     const id = generateId();
     ingredients.push({
@@ -70,7 +68,7 @@ export default {
   },
 
   async updateIngredient(
-    id: IngredientID,
+    id: ID,
     ingredient: Partial<Ingredient>
   ): Promise<void> {
     const ingredients = await getItem<Ingredient>(StorageKey.INGREDIENTS);
@@ -85,9 +83,8 @@ export default {
     throw new APIError(`Ingredient with id = ${id} not found.`);
   },
 
-  async deleteIngredient(id: IngredientID): Promise<Ingredient> {
+  async deleteIngredient(id: ID): Promise<Ingredient> {
     const ingredients = await getItem<Ingredient>(StorageKey.INGREDIENTS);
-    console.log(ingredients, id);
     const index = ingredients.findIndex((r) => r._id === id);
     if (index !== -1) {
       const [deletedIngredient] = ingredients.splice(index, 1);
@@ -97,7 +94,7 @@ export default {
     throw new APIError("Ingredient not found.");
   },
 
-  async getDish(id: DishID): Promise<Dish> {
+  async getDish(id: ID): Promise<Dish> {
     const dishes = await getItem<Dish>(StorageKey.DISHES);
     const index = dishes.findIndex((r) => r._id === id);
     if (index !== -1) {
@@ -106,7 +103,7 @@ export default {
     throw new APIError(`Dish with id = ${id} not found.`);
   },
 
-  async createDish(dish: WithoutId<Dish>): Promise<DishID> {
+  async createDish(dish: WithoutId<Dish>): Promise<ID> {
     const dishes = await getItem<Dish>(StorageKey.DISHES);
     const id = generateId();
     dishes.push({

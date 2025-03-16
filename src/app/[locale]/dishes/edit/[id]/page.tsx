@@ -1,22 +1,22 @@
-import { dishSubmitAction } from "@/app/actions";
 import React from "react";
 import { API } from "@/sdk";
-import DishEditor from "@/components/ui/dish/editor";
+import DishEditor from "@/app/ui/dish/editor";
+import { userCanModifyEntity } from "@/app/auth";
+import { ID } from "@/sdk/types";
 
 export default async function EditIngredient({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: ID }>;
 }) {
   const { id } = await params;
   const dish = await API.getDish(id);
-  const ingredients = API.getIngredients();
+  const canEdit = await userCanModifyEntity(dish);
   return (
     <DishEditor
-      redirect="/dishes"
       entity={dish}
-      ingredientsGetter={ingredients}
-      submitAction={dishSubmitAction}
+      entityId={dish._id}
+      readonly={!canEdit}
     ></DishEditor>
   );
 }

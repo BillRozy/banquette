@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import MenusOverview from "@/components/ui/menu/overview";
+import MenusOverview from "@/app/ui/menu/overview";
 import { Link } from "@/i18n/routing";
+import { API } from "@/sdk";
 import React from "react";
 
 // const tables: Menu[] = [
@@ -22,13 +23,11 @@ import React from "react";
 //     ],
 //   },
 // ];
-export default function Menus() {
+export default async function Menus() {
+  const menus = await API.getMenus();
   return (
     <div className="p-4 flex flex-col gap-4 items-center">
-      <MenusOverview menus={[]}></MenusOverview>
-      <Button>
-        <Link href="/menus/create">Добавить новое меню</Link>
-      </Button>
+      <MenusOverview menus={menus}></MenusOverview>
     </div>
   );
 }

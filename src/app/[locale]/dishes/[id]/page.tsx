@@ -1,32 +1,29 @@
-import { dishDeleteAction } from "@/app/actions";
-import DeleteButtonWithConfirmation from "@/components/ui/collection/delete-button-with-confirmation";
-import EditButton from "@/components/ui/collection/edit-button";
-import DishEditor from "@/components/ui/dish/editor";
+import { deleteAction } from "@/app/actions/dish";
+import { userCanModifyEntity } from "@/app/auth";
+import DeleteButtonWithConfirmation from "@/app/ui/collection/delete-button-with-confirmation";
+import EditButton from "@/app/ui/collection/edit-button";
+import DishEditor from "@/app/ui/dish/editor";
 import { API } from "@/sdk";
+import { ID } from "@/sdk/types";
 import React from "react";
 
-export default async function DishPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function DishPage({ params }: { params: Promise<{ id: ID }> }) {
   const { id } = await params;
   const dish = await API.getDish(id);
-  const ingredients = API.getIngredients();
+  const canEdit = await userCanModifyEntity(dish);
+  const bindDelete = deleteAction.bind(null, id);
   return (
     <>
-      <DishEditor
-        entity={dish}
-        ingredientsGetter={ingredients}
-        readonly
-      ></DishEditor>
-      <div className="flex justify-center items-center gap-4 mt-8">
-        <EditButton href={`/dishes/edit/${dish._id}`}></EditButton>
-        <DeleteButtonWithConfirmation
-          deleteAction={dishDeleteAction.bind(null, id)}
-          confirmationQuestion={`Вы уверены что хотите удалить блюдо ${dish.name}`}
-        ></DeleteButtonWithConfirmation>
-      </div>
+      <DishEditor entityId={id} entity={dish} readonly></DishEditor>
+      {canEdit && (
+        <div className="flex justify-center items-center gap-4 mt-8">
+          <EditButton href={`/dishes/edit/${dish._id}`}></EditButton>
+          <DeleteButtonWithConfirmation
+            deleteAction={bindDelete}
+            confirmationQuestion={`Вы уверены что хотите удалить блюдо ${dish.name}`}
+          ></DeleteButtonWithConfirmation>
+        </div>
+      )}
     </>
   );
 }

@@ -1,0 +1,157 @@
+[
+  {
+    "_id": "000000000000000000000011",
+    "name": "Французский луковый суп",
+    "description": "Традиционный французский суп с карамелизированным луком и гренками",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000003",
+        "quantity": 300
+      },
+      {
+        "measure": "liter",
+        "ingredient": "000000000000000000000514",
+        "quantity": 1
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000424",
+        "quantity": 100
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "soup"
+    ]
+  },
+  {
+    "_id": "000000000000000000000012",
+    "name": "Минестроне",
+    "description": "Итальянский овощной суп с пастой",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000006",
+        "quantity": 100
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000007",
+        "quantity": 100
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000002",
+        "quantity": 150
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000269",
+        "quantity": 50
+      },
+      {
+        "measure": "liter",
+        "ingredient": "000000000000000000000514",
+        "quantity": 1
+      }
+    ],
+    "category": [
+      "soup"
+    ]
+  },
+  {
+    "_id": "000000000000000000000013",
+    "name": "Борщ",
+    "description": "Классический украинский борщ со свеклой и капустой",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000011",
+        "quantity": 150
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000005",
+        "quantity": 200
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000003",
+        "quantity": 100
+      },
+      {
+        "measure": "liter",
+        "ingredient": "000000000000000000000514",
+        "quantity": 1
+      }
+    ],
+    "category": [
+      "soup"
+    ]
+  },
+  {
+    "_id": "000000000000000000000014",
+    "name": "Том Ям",
+    "description": "Тайский острый суп с морепродуктами",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000571",
+        "quantity": 200
+      },
+      {
+        "measure": "milliliter",
+        "ingredient": "000000000000000000000499",
+        "quantity": 500
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000518",
+        "quantity": 2
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "100000000000000000000375",
+        "quantity": 2
+      }
+    ],
+    "category": [
+      "soup"
+    ]
+  },
+  {
+    "_id": "000000000000000000000015",
+    "name": "Гаспачо",
+    "description": "Испанский холодный томатный суп",
+    "ingredients": [
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000007",
+        "quantity": 300
+      },
+      {
+        "measure": "gramm",
+        "ingredient": "000000000000000000000008",
+        "quantity": 100
+      },
+      {
+        "measure": "tablespoon",
+        "ingredient": "000000000000000000000522",
+        "quantity": 2
+      },
+      {
+        "measure": "milliliter",
+        "ingredient": "000000000000000000000514",
+        "quantity": 500
+      }
+    ],
+    "category": [
+      "soup"
+    ]
+  }
+]

@@ -27,7 +27,8 @@
     "next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "seed/ingredients/seed.js"
   ],
   "exclude": ["node_modules"]
 }

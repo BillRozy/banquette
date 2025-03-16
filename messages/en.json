@@ -19,12 +19,94 @@
   "DishEditor": {
     "addIngredient": "Add Ingredient"
   },
+  "MenuEditor": {
+    "menu": "MENU",
+    "Section": {
+      "appetizers": "Appetizers",
+      "mainCourses": "Main Course",
+      "desserts": "Desserts",
+      "drinks": "Drinks",
+      "others": "Other",
+      "ingredients": "Ingredients"
+    }
+  },
+  "DishesFinder": {
+    "createDish": "Create New",
+    "nothingFound": "Nothing Found"
+  },
+  "Ingredient": {
+    "Category": {
+      "fish": "Fish",
+      "meat": "Meat",
+      "vegetable": "Vegetable",
+      "fruit": "Fruit",
+      "green": "Green",
+      "dairy": "Dairy",
+      "dryGoods": "Dry Food",
+      "bakery": "Bakery",
+      "canned": "Canned Food",
+      "eggs": "Eggs",
+      "oil": "Oil",
+      "vinegar": "Vinegar",
+      "sausage": "Sausage",
+      "convenience": "Convenience",
+      "grain": "Grain",
+      "spice": "Spice",
+      "sauce": "Sauce",
+      "sweet": "Sweet",
+      "drink": "Drink",
+      "other": "Other"
+    },
+    "Search": {
+      "nameInputPlaceholder": "Search ingredient by name"
+    }
+  },
+  "Dish": {
+    "Category": {
+      "appetizer": "Appetizer",
+      "mainCourse": "Main Course",
+      "dessert": "Dessert",
+      "salad": "Salad",
+      "soup": "Soup",
+      "sideDish": "Side Dish",
+      "beverage": "Beverage",
+      "snack": "Snack",
+      "sauce": "Sauce",
+      "bread": "Bread",
+      "breakfast": "Breakfast",
+      "brunch": "Brunch",
+      "lunch": "Lunch",
+      "dinner": "Dinner",
+      "other": "Other"
+    },
+    "Search": {
+      "nameInputPlaceholder": "Search dish by name"
+    }
+  },
+  "EntityCategoryFilter": {
+    "title": "Categories"
+  },
   "IngredientMeasure": {
     "askHowMany": "How many?",
-    "selectMeasure": "Select measurement units",
-    "gramm": "Gramm",
-    "kg": "Kg",
-    "item": "Item",
+    "selectMeasure": "Measure",
+    "Group": {
+      "Mass": "By Mass",
+      "Volume": "By Volume",
+      "Other": "Other"
+    },
+    "Mass": {
+      "gramm": "Gramm",
+      "kg": "Kg"
+    },
+    "Volume": {
+      "milliliter": "Ml",
+      "liter": "L"
+    },
+    "Other": {
+      "item": "Item",
+      "teaspoon": "Tsp",
+      "tablespoon": "Tbsp"
+    },
     "removeIngredient": "Remove"
   },
   "IngredientsFinder": {
@@ -35,7 +117,8 @@
       "delete": "Delete"
     },
     "SaveButton": {
-      "save": "Save"
+      "save": "Save",
+      "loading": "Saving"
     },
     "EditButton": {
       "edit": "Edit"
@@ -43,12 +126,20 @@
     "AppSidebar": {
       "brand": "Festive",
       "mainSection": "Main"
+    },
+    "Pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "more": "More Items"
+    },
+    "IngredientsList": {
+      "andMore": "and {quantity} more"
     }
   },
   "Links": {
-    "menus": "My Menus",
-    "dishes": "My Dishes",
-    "ingredients": "My Ingredients",
+    "menus": "Menus",
+    "dishes": "Dishes",
+    "ingredients": "Ingredients",
     "edit": "Edit",
     "create": "Create"
   },

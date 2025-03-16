@@ -1,19 +1,34 @@
-import { Button } from "@/components/ui/button";
-import DishesOverview from "@/components/ui/dish/overview";
-import { Link } from "@/i18n/routing";
-import { getTranslations } from "next-intl/server";
-import React, { Suspense } from "react";
+import DishesOverview from "@/app/ui/dish/overview";
+import React from "react";
+import EntitiesLayout from "@/app/ui/collection/layout/entities-overview-layout";
+import { DishCategory } from "@/sdk/types";
+import {
+  EntitySearchParams,
+  filtersFromLoader,
+  getEntitySearchParamsLoader,
+} from "@/app/utils";
+import { API } from "@/sdk";
+import EntityFilters from "@/app/ui/collection/filter/entity-filters";
+import { PaginationWithQuery } from "@/app/ui/collection/pagination";
+import { DishCategoryEnumSchema, EntityEnumSchema } from "@/sdk/schemas";
 
-export default async function Dishes() {
-  const t = await getTranslations("Dishes");
+const loadSearchParams = getEntitySearchParamsLoader<DishCategory>(
+  Object.values(DishCategoryEnumSchema.enum)
+);
+
+export default async function Dishes({
+  searchParams,
+}: {
+  searchParams: Promise<EntitySearchParams>;
+}) {
+  const [dishes, dishesTotal] = await API.getDishes(
+    await filtersFromLoader(loadSearchParams, searchParams)
+  );
   return (
-    <div className="p-4 flex flex-col gap-4 items-center">
-      <Suspense>
-        <DishesOverview></DishesOverview>
-      </Suspense>
-      <Button>
-        <Link href="/dishes/create">{t("create")}</Link>
-      </Button>
-    </div>
+    <EntitiesLayout
+      filters={<EntityFilters entityName={EntityEnumSchema.enum.Dish} />}
+      entities={<DishesOverview dishes={dishes} />}
+      pagination={<PaginationWithQuery totalElements={dishesTotal} />}
+    />
   );
 }

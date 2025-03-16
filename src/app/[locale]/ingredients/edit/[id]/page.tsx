@@ -1,7 +1,7 @@
-import { ingredientSubmitAction } from "@/app/actions";
-import IngredientEditor from "@/components/ui/ingredient/editor";
+import IngredientEditor from "@/app/ui/ingredient/editor";
 import React from "react";
 import { API } from "@/sdk";
+import { userCanModifyEntity } from "@/app/auth";
 
 export default async function EditIngredient({
   params,
@@ -10,11 +10,12 @@ export default async function EditIngredient({
 }) {
   const { id } = await params;
   const ingredient = await API.getIngredient(id);
+  const canEdit = await userCanModifyEntity(ingredient);
   return (
     <IngredientEditor
-      redirect="/ingredients"
       entity={ingredient}
-      submitAction={ingredientSubmitAction}
+      entityId={ingredient._id}
+      readonly={!canEdit}
     ></IngredientEditor>
   );
 }
