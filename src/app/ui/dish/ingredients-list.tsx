@@ -5,8 +5,8 @@ import { Skeleton } from "../../../components/ui/skeleton";
 import { HoverCard, HoverCardContent } from "../../../components/ui/hover-card";
 import TriggerWithLink from "./ingredient-badge";
 import IngredientPreview from "../ingredient/ingredient-preview";
-import { useTranslations } from "next-intl";
 import { findIngredients } from "@/app/queries";
+import { getTranslations } from "next-intl/server";
 
 function IngredientsListFallback() {
   return (
@@ -38,7 +38,7 @@ export default async function IngredientsList({
 }: {
   ingredients: MeasuredIngredient[];
 }) {
-  const t = useTranslations("Components.IngredientsList");
+  const t = await getTranslations("Components.IngredientsList");
   const [loadedIngredients, totalIngredientsCount] = await findIngredients({
     filter: {
       ids: ingredients.map((it) => it.ingredient),

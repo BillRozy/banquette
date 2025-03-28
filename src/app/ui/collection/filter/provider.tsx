@@ -12,7 +12,7 @@ import { createContext, PropsWithChildren, useEffect } from "react";
 
 export type EntityFilterContext = {
   entityName: EntityEnum;
-  entityFilters: ReturnType<typeof useEntityFilters<string>>;
+  entityFilters: ReturnType<typeof useEntityFilters>;
   pagination: PaginationReturn;
   categoriesWithCounts: [string, number][];
 };
@@ -55,13 +55,13 @@ export function EntityFilterProviderLocal({
 }: EntityFilterProviderType & {
   onFiltersChange: (
     filters: ReturnType<typeof useEntityFiltersLocal>["filters"]
-  ) => {};
+  ) => void;
 }) {
   const entityFilters = useEntityFiltersLocal();
   const pagination = usePaginationLocal();
   useEffect(() => {
     onFiltersChange(entityFilters.filters);
-  }, [entityFilters.filters]);
+  }, [entityFilters.filters, onFiltersChange]);
   return (
     <EntityFilterContext.Provider
       value={{

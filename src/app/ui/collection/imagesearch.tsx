@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale } from "next-intl";
 import clsx from "clsx";
 import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 const formSchema = z.object({
   searchBy: z.string().min(2, {
@@ -91,7 +92,7 @@ export default function ImageSearch({
       </Form>
       <div className="flex flex-wrap gap-4 mt-4">
         {images.map((image) => (
-          <img
+          <Image
             key={image}
             src={image}
             alt={"result"}
@@ -100,7 +101,7 @@ export default function ImageSearch({
               image === selectedImageCache && "ring-2"
             )}
             onClick={() => selectImage(image)}
-          ></img>
+          ></Image>
         ))}
       </div>
     </div>

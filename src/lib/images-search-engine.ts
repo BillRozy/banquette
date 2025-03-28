@@ -36,9 +36,6 @@ export default class ImagesSearchEngine {
   }
   public async search(
     query: string,
-    location: string,
-    width: number = 600,
-    height: number = 600
   ): Promise<ImageItem[]> {
     const params = this.defaultQueryParams;
     params.append("q", query);
@@ -53,7 +50,7 @@ export default class ImagesSearchEngine {
     const $ = load(body);
     const imagesResults: ImageItem[] = [];
 
-    $(".imgpt a").each(function (i, el) {
+    $(".imgpt a").each(function (_, __) {
       const itemPropsStr = $(this).attr("m");
       if (itemPropsStr) {
         const itemProps = JSON.parse(itemPropsStr ?? "") as BingImgProps;

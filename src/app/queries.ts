@@ -21,9 +21,9 @@ export const getCategories = async (entityName: EntityEnum) => {
 
 export const searchPicturesByDescription2 = async (
   description: string,
-  locale: string
+  __locale: string
 ): Promise<string[]> => {
-  return (await searcher.search(description, locale))
+  return (await searcher.search(description))
     .filter((it) => it.image != null)
     .map((it) => it.image) as string[];
 };
@@ -43,5 +43,5 @@ export const searchPicturesByDescription = async (
     imgar: "s",
   });
   // TODO: create type for serpapi search result
-  return result.images_results.map((it: any) => it.original).slice(0, 10);
+  return result.images_results.map((it: any) => it.original).slice(0, 10); // eslint-disable-line @typescript-eslint/no-explicit-any
 };

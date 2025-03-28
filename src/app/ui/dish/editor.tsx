@@ -40,6 +40,7 @@ import { DishCategoryEnumSchema, DishSchema } from "@/sdk/schemas";
 import { getCreateSchema, getEditSchema } from "@/app/actions/editor-schema";
 import { createAction, editAction } from "@/app/actions/dish";
 import DishImage from "./dish-image";
+import Image from "next/image";
 
 const MemoizedIngredientMeasure = memo(function MemoizedIngredientMeasure({
   readonly = false,
@@ -50,7 +51,7 @@ const MemoizedIngredientMeasure = memo(function MemoizedIngredientMeasure({
 }: {
   readonly?: boolean;
   index: number;
-  control: any;
+  control: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   ingredientId: ID;
   removeFunction: (index: number) => void;
 }) {
@@ -230,11 +231,11 @@ export default function DishEditor({
                   className="rounded-lg border-[1px] border-gray-300 overflow-hidden flex justify-center"
                 >
                   {picture ? (
-                    <img
+                    <Image
                       src={picture}
                       alt="Image here"
                       className="w-full h-full object-cover"
-                    ></img>
+                    ></Image>
                   ) : entityId != null ? (
                     <DishImage id={entityId}></DishImage>
                   ) : (

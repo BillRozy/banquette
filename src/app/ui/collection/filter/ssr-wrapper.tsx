@@ -21,7 +21,7 @@ export default function EntityFilterProviderWrapper({
     (async () => {
       setCategories(await getCategories(entityName));
     })();
-  }, []);
+  }, [setCategories, entityName]);
   if (!categories) return null;
   return onFiltersChange ? (
     <EntityFilterProviderLocal

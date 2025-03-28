@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Input } from "../../../../components/ui/input";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useTranslations } from "next-intl";
@@ -19,14 +19,14 @@ export default function NameFilter() {
       resetPagination();
       setName(debouncedName);
     }
-  }, [debouncedName, name]);
+  }, [debouncedName, name, resetPagination, setName]);
 
   return (
     <div className="flex w-full max-w-sm items-center space-x-2">
       <Input
         type="text"
         placeholder={t("nameInputPlaceholder")}
-        value={localName}
+        value={localName ?? ""}
         onChange={(val) => setLocalName(val.target.value)}
       />
     </div>

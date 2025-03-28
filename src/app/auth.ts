@@ -67,7 +67,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Instagram,
     Vk,
   ],
-  // @ts-ignore: 2322
+  // @ts-expect-error: 2322
   adapter: MongoDBAdapter(client, {
     databaseName: process.env.DB_NAME,
   }),

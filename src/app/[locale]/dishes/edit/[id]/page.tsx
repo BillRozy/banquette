@@ -4,7 +4,7 @@ import DishEditor from "@/app/ui/dish/editor";
 import { userCanModifyEntity } from "@/app/auth";
 import { ID } from "@/sdk/types";
 
-export default async function EditIngredient({
+export default async function EditDish({
   params,
 }: {
   params: Promise<{ id: ID }>;

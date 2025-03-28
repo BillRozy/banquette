@@ -1,4 +1,3 @@
-import { Filter } from "mongodb";
 import {
   parseAsArrayOf,
   parseAsString,
@@ -7,26 +6,35 @@ import {
 } from "nuqs";
 import { useState } from "react";
 
-type Filters<T extends string> = {
+type Filters = {
   name?: string | null;
-  categories?: T[] | null;
+  categories?: string[] | null;
 };
 
-export const useEntityFiltersLocal = <T extends string>({
-  name = "",
+type UseFiltersReturn = {
+  setName: (name: string | null) => void;
+  setCategories: (categories: string[] | null) => void;
+  name: string | null;
+  categories: string[] | null;
+  setFilters: (filters: Filters) => void;
+  filters: Filters;
+}
+
+export const useEntityFiltersLocal = ({
+  name = null,
   categories = null,
-}: Filters<T> = {}) => {
-  const [filters, setFilters] = useState<Filters<T>>({
+}: Filters = {}) : UseFiltersReturn => {
+  const [filters, setFilters] = useState<Filters>({
     name,
     categories,
   });
-  const setName = (name: string | null = "") => {
+  const setName = (name: string | null = null) => {
     setFilters((curVal) => ({
       name: name,
       categories: curVal.categories,
     }));
   };
-  const setCategories = (categories: T[] | null = null) => {
+  const setCategories = (categories: string[] | null = null) => {
     setFilters((curVal) => ({
       name: curVal.name,
       categories: categories,
@@ -35,20 +43,20 @@ export const useEntityFiltersLocal = <T extends string>({
   return {
     setName,
     setCategories,
-    name: filters.name,
-    categories: filters.categories,
+    name: filters.name ?? null,
+    categories: filters.categories ?? null,
     setFilters,
     filters,
   };
 };
 
-export default function <T extends string>(availableCategoriesForEntity: T[]) {
+export default function useEntityFilters(availableCategoriesForEntity: string[]) : UseFiltersReturn {
   const [filters, setFilters] = useQueryStates(
     {
       categories: parseAsArrayOf(
-        parseAsStringEnum<T>(availableCategoriesForEntity)
+        parseAsStringEnum(availableCategoriesForEntity)
       ),
-      name: parseAsString.withDefault(""),
+      name: parseAsString,
     },
     {
       shallow: false,
@@ -61,7 +69,7 @@ export default function <T extends string>(availableCategoriesForEntity: T[]) {
       categories: filters.categories,
     });
   };
-  const setCategories = (categories: T[] | null = null) => {
+  const setCategories = (categories: string[] | null = null) => {
     setFilters({
       name: filters.name,
       categories,

@@ -1,4 +1,3 @@
-import { ingredientCreateAction } from "@/app/actions";
 import BottomDrawer from "@/app/ui/collection/drawer";
 import SaveButton from "@/app/ui/collection/save-button";
 import IngredientEditor from "@/app/ui/ingredient/editor";
@@ -16,8 +15,6 @@ export default function IngredientCreator() {
         redirect="/ingredients"
         noSaveButton
         noDeleteButton
-        formId={id}
-        submitAction={ingredientCreateAction}
       ></IngredientEditor>
     </BottomDrawer>
   );

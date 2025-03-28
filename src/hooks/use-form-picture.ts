@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import { useState } from "react";
 
 export default function useFormPicture({
@@ -5,7 +6,7 @@ export default function useFormPicture({
   form,
 }: {
   initialValue?: string;
-  form: any;
+  form: ReturnType<typeof useForm>;
 }) {
   const [tempPicture, setTempPicture] = useState(initialValue);
   const selectPicture = (picture: string) => {

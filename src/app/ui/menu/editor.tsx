@@ -59,7 +59,7 @@ function MenuSectionView({
     setSectionDishes(
       dishes.filter((it) => appFields.some((field) => field.id === it._id))
     );
-  }, [dishes, selectedDishes]);
+  }, [dishes, selectedDishes, sectionName]);
   const addDishToMenuSection = useCallback(
     (id: ID) => {
       append({
@@ -68,11 +68,11 @@ function MenuSectionView({
         section: sectionName,
       });
     },
-    [dishes]
+    [append, sectionName]
   );
   useEffect(() => {
     calcSectionDishes();
-  }, [dishes, selectedDishes]);
+  }, [calcSectionDishes]);
   return (
     <FormItem className="flex flex-col items-start gap-6">
       <FormLabel className="uppercase text-xl font-semibold tracking-[0.2em] flex items-center">
@@ -148,7 +148,7 @@ export default function MenuEditor({
     },
   });
   const t = useTranslations("MenuEditor");
-  const { append, fields } = useFieldArray({
+  const { append } = useFieldArray({
     name: "entity.dishes",
     control: form.control,
   });

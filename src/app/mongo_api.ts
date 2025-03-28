@@ -57,12 +57,7 @@ export default {
     entity: EntityEnum,
     { filter = {}, pagination: { perPage = 25, page = 1 } = {} }: EntityFindBy
   ) {
-    const findObject = {} as {
-      _id: any;
-      name: any;
-      createdBy: any;
-      category: any;
-    };
+    const findObject: Record<string, any> = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
     if (filter.ids) {
       findObject._id = { $in: filter.ids.map((id) => new ObjectId(id)) };
     }
@@ -141,7 +136,7 @@ export default {
       .db(DB_NAME)
       .collection<E>(entityToCollection(entityName))
       .updateOne(
-        // @ts-ignore: 2345
+        // @ts-expect-error: 2345
         { _id: new ObjectId(id) },
         {
           $set: entityData,
@@ -152,17 +147,17 @@ export default {
     }
   },
   async deleteEntity<E extends Entity>(entityName: EntityEnum, id: ID) {
-    let result = await mongodb
+    const result = await mongodb
       .db(DB_NAME)
       .collection<WithId<E>>(entityToCollection(entityName))
-      // @ts-ignore: 2345
+      // @ts-expect-error: 2345
       .findOneAndDelete({ _id: new ObjectId(id) });
     if (result == null) {
       throw new APIError(`Entity with id = ${id} not found.`);
     }
   },
   async getIngredientsCategories() {
-    return this.getEntityCategories<Ingredient>(
+    return this.getEntityCategories(
       EntityEnumSchema.enum.Ingredient
     );
   },
@@ -175,7 +170,7 @@ export default {
     return this.getEntities(EntityEnumSchema.enum.Ingredient, criterio);
   },
   async getDishCategories() {
-    return this.getEntityCategories<Dish>(EntityEnumSchema.enum.Dish);
+    return this.getEntityCategories(EntityEnumSchema.enum.Dish);
   },
   async getDish(id: ID): Promise<WithSimpleId<Dish>> {
     return this.getEntity(EntityEnumSchema.enum.Dish, id);
@@ -233,7 +228,7 @@ export default {
     const session = mongodb.startSession();
     try {
       session.startTransaction();
-      let result = await mongodb
+      const result = await mongodb
         .db(DB_NAME)
         .collection<WithId<Ingredient>>(StorageCollections.INGREDIENTS)
         .findOneAndDelete({ _id: new ObjectId(id) });
@@ -289,7 +284,7 @@ export default {
     const session = mongodb.startSession();
     try {
       session.startTransaction();
-      let result = await mongodb
+      const result = await mongodb
         .db(DB_NAME)
         .collection<WithId<Dish>>(StorageCollections.DISHES)
         .findOneAndDelete({ _id: new ObjectId(id) });

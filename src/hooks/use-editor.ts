@@ -22,11 +22,11 @@ export function useEditor<T extends ZodRawShape>({
   formId?: string;
   formSchema: z.ZodObject<T>;
   formAction: HookSafeActionFn<
-    any,
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
     z.ZodObject<T>,
-    any,
-    any,
-    any,
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
     ActionResponse<undefined> | ActionResponse<ActionError>
   >;
   props: Parameters<typeof useHookFormAction>[2];
@@ -38,7 +38,7 @@ export function useEditor<T extends ZodRawShape>({
   const data = action.result.data;
   const resolvedId = useMemo(() => {
     return formId ?? id;
-  }, [formId]);
+  }, [formId, id]);
   useEffect(() => {
     if (data) {
       if (checkResponseIsSuccess(data)) {
@@ -55,7 +55,7 @@ export function useEditor<T extends ZodRawShape>({
         console.error(data.data);
       }
     }
-  }, [data]);
+  }, [data, redirect, refresh, replace]);
   return {
     id: resolvedId,
     form,

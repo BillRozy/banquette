@@ -36,17 +36,18 @@ export default function CategoryFilter() {
       categories: categories ?? [],
     },
   });
+  const watch  = form.watch;
   useEffect(() => {
-    const { unsubscribe } = form.watch((value) => {
+    const { unsubscribe } = watch((value) => {
       resetPagination();
       if (value.categories == null) {
         setCategories(null);
       } else {
-        setCategories(value.categories?.length > 0 ? value.categories : null);
+        setCategories(value.categories?.length > 0 ? value.categories.filter(it => it != null) : null);
       }
     });
     return () => unsubscribe();
-  }, [form.watch]);
+  }, [watch, resetPagination, setCategories]);
   return (
     <Form {...form}>
       <form className="space-y-8">
@@ -57,7 +58,7 @@ export default function CategoryFilter() {
             <FormItem>
               <FormLabel className="text-sm">{t2("title")}</FormLabel>
               <div className="flex flex-wrap justify-start items-center gap-2">
-                {categoriesWithCounts?.map(([category, count]) => (
+                {categoriesWithCounts?.map(([category, _]) => (
                   <FormField
                     key={category}
                     control={form.control}

@@ -9,11 +9,9 @@ import {
 import { Separator } from "../../../components/ui/separator";
 import IngredientsList from "./ingredients-list";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
 import DishImage from "./dish-image";
 
 export default function DishCard({ dish }: { dish: WithId<Dish> }) {
-  const t = useTranslations("DishCard");
   return (
     <Card className="min-w-72 lg:min-w-56 overflow-hidden max-w-xs">
       <CardHeader className="p-0 relative min-h-24">

@@ -32,11 +32,11 @@ export default function DeleteButtonWithConfirmation({
   redirect,
 }: {
   deleteAction: HookSafeActionFn<
-    any,
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
     undefined,
     [z.ZodBranded<z.ZodString, "ID">],
-    any,
-    any,
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    any, // eslint-disable-line @typescript-eslint/no-explicit-any
     ActionResponse<undefined> | ActionResponse<ActionError>
   >;
   confirmationQuestion: string;
@@ -62,7 +62,7 @@ export default function DeleteButtonWithConfirmation({
         replace(redirect);
       }
     }
-  }, [data]);
+  }, [data, redirect, replace]);
 
   return (
     <AlertDialog>

@@ -1,22 +1,22 @@
-import { dishDeleteAction } from "@/app/actions";
+import { deleteAction } from "@/app/actions/dish";
 import { auth } from "@/app/auth";
 import DeleteButtonWithConfirmation from "@/app/ui/collection/delete-button-with-confirmation";
 import BottomDrawer from "@/app/ui/collection/drawer";
 import EditButton from "@/app/ui/collection/edit-button";
 import DishEditor from "@/app/ui/dish/editor";
 import { API } from "@/sdk";
+import { ID } from "@/sdk/types";
 import React from "react";
 
 export default async function DishPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: ID }>;
 }) {
   const session = await auth();
   const { id } = await params;
   const dish = await API.getDish(id);
-  const ingredients = API.getIngredients();
-
+  const bindDelete = deleteAction.bind(null, id);
   return (
     <BottomDrawer
       header={dish.name}
@@ -25,7 +25,7 @@ export default async function DishPage({
           <>
             <EditButton href={`/dishes/edit/${dish._id}`}></EditButton>
             <DeleteButtonWithConfirmation
-              deleteAction={dishDeleteAction.bind(null, id)}
+              deleteAction={bindDelete}
               confirmationQuestion={`Вы уверены что хотите удалить блюдо ${dish.name}`}
             ></DeleteButtonWithConfirmation>
           </>
@@ -34,7 +34,7 @@ export default async function DishPage({
     >
       <DishEditor
         entity={dish}
-        ingredientsGetter={ingredients}
+        entityId={id}
         readonly
       ></DishEditor>
     </BottomDrawer>

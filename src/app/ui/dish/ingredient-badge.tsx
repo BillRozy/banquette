@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import { HoverCardTrigger } from "../../../components/ui/hover-card";
 import { badgeVariants } from "../../../components/ui/badge";
-import { Link } from "@/i18n/routing";
 import { Ingredient, WithId } from "@/sdk/types";
 import { useLocale } from "next-intl";
 

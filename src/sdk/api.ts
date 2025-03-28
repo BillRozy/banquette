@@ -24,7 +24,7 @@ export type API = {
     entity: EntityEnum,
     id: string
   ): Promise<WithSimpleId<T>>;
-  getEntityCategories<E extends Entity>(
+  getEntityCategories(
     entity: EntityEnum
   ): Promise<[string, number][]>;
   getEntities<E extends Entity>(

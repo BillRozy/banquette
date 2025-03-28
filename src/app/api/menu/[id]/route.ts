@@ -2,11 +2,10 @@
 export const dynamic = "force-dynamic";
 
 export async function POST(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  _: Request,
+  __: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
     const encoder = new TextEncoder();
     // Create a streaming response
     const customReadable = new ReadableStream({

@@ -29,6 +29,7 @@ import { createAction, editAction } from "@/app/actions/ingredient";
 import { getCreateSchema, getEditSchema } from "@/app/actions/editor-schema";
 import { useEditor } from "@/hooks/use-editor";
 import { EditorProps } from "@/components/ui/props";
+import Image from "next/image";
 
 export default function IngredientEditor({
   formId,
@@ -82,11 +83,11 @@ export default function IngredientEditor({
           <div className="max-w-72 w-full h-full flex justify-center items-center rounded-lg border-[1px] border-gray-300 overflow-hidden">
             {picture ? (
               <AspectRatio>
-                <img
+                <Image
                   src={picture}
                   alt="Image here"
                   className="w-full h-full object-cover "
-                ></img>
+                ></Image>
               </AspectRatio>
             ) : entityId != null ? (
               <CldImage

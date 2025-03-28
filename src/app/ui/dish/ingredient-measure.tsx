@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../components/ui/select";
-import { Ingredient, Measurement, WithId } from "@/sdk/types";
+import { Ingredient, WithId } from "@/sdk/types";
 import { Control } from "react-hook-form";
 import {
   Card,
@@ -43,7 +43,7 @@ export default function IngredientMeasure({
 }: {
   readonly?: boolean;
   index: number;
-  control: Control<any>;
+  control: Control<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   ingredientUsable: Usable<WithId<Ingredient>>;
   remove: () => void;
 }) {

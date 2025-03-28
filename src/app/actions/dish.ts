@@ -5,7 +5,7 @@ import {
   buildDeleteAction,
   buildEditAction,
 } from "./editor-actions-builder";
-import { DishSchema, EntityEnumSchema, IDSchema } from "@/sdk/schemas";
+import { DishSchema, EntityEnumSchema } from "@/sdk/schemas";
 
 export const editAction = buildEditAction(
   EntityEnumSchema.enum.Dish,

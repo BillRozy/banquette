@@ -4,12 +4,13 @@ import DeleteButtonWithConfirmation from "@/app/ui/collection/delete-button-with
 import EditButton from "@/app/ui/collection/edit-button";
 import IngredientEditor from "@/app/ui/ingredient/editor";
 import { API } from "@/sdk";
+import { ID } from "@/sdk/types";
 import React from "react";
 
 export default async function IngredientView({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: ID }>;
 }) {
   const { id } = await params;
   const ingredient = await API.getIngredient(id);

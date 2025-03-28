@@ -35,7 +35,7 @@ function PurePagination({
   const pagesCount = Math.ceil(totalElements / perPage);
   const prevPage = page > 1 ? page - 1 : 1;
   const nextPage = page < pagesCount ? page + 1 : pagesCount;
-  let numberedLinks = Array.from(
+  const numberedLinks = Array.from(
     { length: pagesCount },
     (_, i) => i + 1
   ).reduce((result, currentPage, index) => {
@@ -143,7 +143,7 @@ export function PaginationLocal({
   const pagination = usePaginationLocal(paginationOptions);
   useEffect(() => {
     onPageChange(pagination.page);
-  }, [pagination.page]);
+  }, [pagination.page, onPageChange]);
   return (
     <PurePagination
       {...pagination}

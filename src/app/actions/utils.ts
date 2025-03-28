@@ -6,7 +6,7 @@ export function assertActionError(err: unknown): asserts err is ActionError {
   }
 }
 
-export type Action = (...args: any) => ActionResponse;
+export type Action = (...args: any) => ActionResponse; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export type ActionResponse<T = undefined> = {
   success: boolean;
@@ -15,13 +15,13 @@ export type ActionResponse<T = undefined> = {
 };
 
 export function checkResponseIsSuccess<T = undefined>(
-  resp: any
+  resp: any // eslint-disable-line @typescript-eslint/no-explicit-any
 ): resp is ActionResponse<T> {
   return resp.success;
 }
 
 export function checkResponseIsError(
-  resp: any
+  resp: any // eslint-disable-line @typescript-eslint/no-explicit-any
 ): resp is ActionResponse<ActionError> {
   return !resp.success;
 }

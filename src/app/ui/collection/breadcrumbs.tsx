@@ -11,7 +11,6 @@ import {
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import clsx from "clsx";
-Link;
 
 function BreadcrumbLocalizedLink({
   href,
@@ -50,7 +49,7 @@ export default function Breadcrumbs() {
       );
     }
     return _links;
-  }, [segments]);
+  }, [segments, t]);
   const lastLocalizedSegment = t.has(segments[segments.length - 1])
     ? t(segments[segments.length - 1])
     : segments[segments.length - 1];

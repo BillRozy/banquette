@@ -36,9 +36,9 @@ type BoxFunc<T extends string> = typeof getEntitySearchParamsLoader<T>;
 export async function filtersFromLoader<T extends string>(
   loader: ReturnType<BoxFunc<T>>,
   params: Promise<EntitySearchParams>
-): Promise<EntityFindBy<T>> {
+): Promise<EntityFindBy> {
   const { name, page, perPage, categories } = await loader(params);
-  const filter: EntityFilter<T> = {};
+  const filter: EntityFilter = {};
   if (name !== "") {
     filter.nameLike = name;
   }
